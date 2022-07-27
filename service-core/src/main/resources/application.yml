@@ -1,0 +1,39 @@
+server:
+  port: 8110
+spring:
+  profiles:
+    active: dev
+  application:
+    name: service-core
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/srb_core?serverTimezone=GMT%2B8&characterEncoding=utf-8
+    username: root
+    password: 123456
+  redis:
+    host: localhost
+    database: 0
+    timeout: 3000  #超过3000ms报错
+    lettuce:
+      pool:
+        max-active: 20  #最大连接数
+        max-wait: -1  #默认阻塞等待时间，-1表示没有限制
+        max-idle: 8  #最大空闲连接
+        min-idle: 0  #最小空闲连接
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+# 配置rabbitmq
+#  rabbitmq:
+#    host: 192.168.56.10
+#    port: 5672
+#    virtual-host: /srb-host
+#    username: srb-user
+#    password: 1234
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:com/dx/srb/core/mapper/xml/*.xml

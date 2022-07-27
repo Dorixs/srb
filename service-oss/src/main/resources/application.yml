@@ -1,0 +1,29 @@
+server:
+  port: 8130 # 服务端口
+spring:
+  profiles:
+    active: dev # 环境设置
+  application:
+    name: service-oss # 服务名
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+# 阿里云对象存储服务配置
+#aliyun:
+#  oss:
+#    endpoint: xxxxxx
+#    keyId: xxxxxx
+#    keySecret: xxxxxx
+#    bucketName: xxxxxx
+
+# 阿里云对象存储服务配置
+aliyun:
+  oss:
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+    keyId: LTAI5tJdwGEMfNWn2w5k8bPL
+    keySecret: sDp3tIRNxL7EKxQrwFgjMjGHYcSwzc
+    bucketName: srb-file-dx
+
+

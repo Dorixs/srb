@@ -1,0 +1,49 @@
+server:
+  port: 8120
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: service-sms
+
+  redis:
+    host: localhost
+    database: 0
+    timeout: 3000  #超过3000ms报错
+    lettuce:
+      pool:
+        max-active: 20  #最大连接数
+        max-wait: -1  #默认阻塞等待时间，-1表示没有限制
+        max-idle: 8  #最大空闲连接
+        min-idle: 0  #最小空闲连接
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  # 配置rabbitmq
+  #  rabbitmq:
+  #    host: 192.168.56.10
+  #    port: 5672
+  #    virtual-host: /srb-host
+  #    username: srb-user
+  #    password: 1234
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000 #连接超时配置
+        readTimeout: 600000  #执行超时配置
+  sentinel:
+    enabled: true  #开启服务熔断
+
+#短信配置容联云
+rckj:
+  accountSId: 8a216da881ad97540181f090026a0f15  #自己的accountSId
+  accountToken: 891c8ab4317445a7ba7fa146d209561f  #自己的accountToken
+  appId: 8a216da881ad97540181f090036a0f1c   #自己的accountToken
+  serverIp: app.cloopen.com  #默认都是这个
+  serverPort: 8883  #默认都是这个
+
